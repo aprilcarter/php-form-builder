@@ -27,6 +27,7 @@ class PhpFormBuilder {
 			'method'       => 'post',
 			'enctype'      => 'application/x-www-form-urlencoded',
 			'class'        => array(),
+			'data'	       => array(),
 			'id'           => '',
 			'markup'       => 'html',
 			'novalidate'   => false,
@@ -93,7 +94,13 @@ class PhpFormBuilder {
 					return false;
 				}
 				break;
-
+			
+			case 'data':
+				//check if each val in $val['data-attr'] is a string
+				if(!is_array($val)) {
+					return false;
+				}
+			
 			case 'novalidate':
 			case 'add_honeypot':
 			case 'form_element':
